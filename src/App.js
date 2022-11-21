@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Provider from "./Provider";
+import Context from "./Context";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const Agents  = () => {
+    return <AgentOne />
 }
 
-export default App;
+const AgentOne  = () => {
+    return <AgentTwo />
+}
+
+const AgentTwo  = () => {
+    return <AgentBond />
+}
+
+const AgentBond  = () => {
+    return (
+        <Context.Consumer>
+            {
+                (context) => (
+                <div>
+                    <h3>
+                        Agent Information
+                    </h3>
+                    <p>
+                        Mission Name: {context.data.mname}
+                        Agent Name: {context.data.accept}
+                        
+                    </p>
+                    <button onClick={context.isMissionAccepted}>Chose to accep</button>
+                </div>
+                )
+            }
+        </Context.Consumer>
+    )
+}
+
+const App = () => {
+    return(
+        <div>
+            <h1>Context Api</h1>
+            <Provider>
+                <Agents />
+            </Provider>
+        </div>
+    )
+}
+
+export default App
