@@ -22,7 +22,7 @@ const AgentBond  = () => {
                 (context) => (
                 <div>
                     <h3>
-                        Agent Information
+                         Information
                     </h3>
                     <p>
                         Mission Name: {context.data.mname}
